@@ -1,4 +1,5 @@
 import { motion, useTransform } from 'framer-motion';
+import { publicUrl } from '../../utils/publicUrl';
 import styles from './SpiderMan.module.css';
 
 // The thread pays out first as you scroll; the character himself stays
@@ -30,7 +31,12 @@ export function SpiderMan({ scrollYProgress, spiderRef, onSayHi, hasScrolled }) 
         onClick={onSayHi}
         aria-label="Say hi to the crocheted Spider-Man"
       >
-        <img src="/floating-images/Spiderman-crocheted.png" alt="" className={styles.spiderImg} draggable="false" />
+        <img
+          src={publicUrl('/floating-images/Spiderman-crocheted.png')}
+          alt=""
+          className={styles.spiderImg}
+          draggable="false"
+        />
       </motion.button>
     </>
   );

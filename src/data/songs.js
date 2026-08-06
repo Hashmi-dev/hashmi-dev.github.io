@@ -2,31 +2,12 @@
 // Add or remove files in "public/media/songs" (audio) and
 // "public/media/song images" (cover art, same filename) and this
 // regenerates automatically — no code changes needed.
+const BASE_URL = import.meta.env.BASE_URL;
 const songs = [
-  {
-    "id": "Adakaari",
-    "title": "Adakaari",
-    "cover": "/media/song%20images/Adakaari.png",
-    "src": "/media/songs/Adakaari.mp3"
-  },
-  {
-    "id": "Begged",
-    "title": "Begged",
-    "cover": "/media/song%20images/Begged.png",
-    "src": "/media/songs/Begged.mp3"
-  },
-  {
-    "id": "I Don't Wanna Be Okay Without You",
-    "title": "I Don't Wanna Be Okay Without You",
-    "cover": "/media/song%20images/I%20Don't%20Wanna%20Be%20Okay%20Without%20You.png",
-    "src": "/media/songs/I%20Don't%20Wanna%20Be%20Okay%20Without%20You.mp3"
-  },
-  {
-    "id": "The Color Violet",
-    "title": "The Color Violet",
-    "cover": "/media/song%20images/The%20Color%20Violet.png",
-    "src": "/media/songs/The%20Color%20Violet.mp3"
-  }
+  { id: "Adakaari", title: "Adakaari", cover: BASE_URL + "media/song%20images/Adakaari.png", src: BASE_URL + "media/songs/Adakaari.mp3" },
+  { id: "Begged", title: "Begged", cover: BASE_URL + "media/song%20images/Begged.png", src: BASE_URL + "media/songs/Begged.mp3" },
+  { id: "I Don't Wanna Be Okay Without You", title: "I Don't Wanna Be Okay Without You", cover: BASE_URL + "media/song%20images/I%20Don't%20Wanna%20Be%20Okay%20Without%20You.png", src: BASE_URL + "media/songs/I%20Don't%20Wanna%20Be%20Okay%20Without%20You.mp3" },
+  { id: "The Color Violet", title: "The Color Violet", cover: BASE_URL + "media/song%20images/The%20Color%20Violet.png", src: BASE_URL + "media/songs/The%20Color%20Violet.mp3" }
 ];
 
 export default songs;

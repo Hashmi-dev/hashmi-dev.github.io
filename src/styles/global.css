@@ -26,7 +26,9 @@ body {
   font-family: var(--font-ui);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: url('/cursors/crochet-hook.svg') 4 9, auto;
+  /* Cursor is set from JS (src/main.jsx) — url() in plain CSS doesn't get
+     Vite's base-path rewriting, so a hardcoded path here would 404 on a
+     GitHub Pages subpath deploy. */
 }
 
 button {
