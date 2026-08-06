@@ -1,0 +1,292 @@
+.player {
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  background: rgba(251, 243, 236, 0.85);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(110, 20, 35, 0.1);
+}
+
+/* Reserves room for the disc AND the tonearm's full swing, so the arm
+   never has to render outside this column and into the track text. */
+.turntableWrap {
+  position: relative;
+  width: 140px;
+  height: 108px;
+  flex-shrink: 0;
+}
+
+.discWrap {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(43, 22, 32, 0.35), var(--shadow-soft);
+}
+
+.disc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #1c1418 0%, #100b0d 60%, #050304 100%);
+  animation: spin 2.8s linear infinite;
+  animation-play-state: paused;
+}
+
+.disc.spinning {
+  animation-play-state: running;
+}
+
+.vinylBase {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.08), transparent 55%);
+}
+
+.coverImg {
+  position: absolute;
+  inset: 9%;
+  width: 82%;
+  height: 82%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.grooves {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.3) 0px,
+    rgba(0, 0, 0, 0.3) 1px,
+    transparent 1.5px,
+    transparent 4px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+.spindle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4e6cf, var(--antique-gold) 55%, #6f5326 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.gloss {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0) 26%,
+    rgba(255, 255, 255, 0) 74%,
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tonearm: pivots from a mount tucked in the wrap's top-right corner.
+   Rest is a slight lean to the right (parked clear of the disc); playing
+   swings the needle end left and down onto the disc surface. Both angles
+   and the shaft length are chosen so the swept arc stays inside
+   .turntableWrap (never into the track text) while still actually
+   reaching the record when "down". */
+.tonearmMount {
+  position: absolute;
+  top: 6px;
+  right: 24px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4e6cf, var(--antique-gold) 55%, #6f5326 100%);
+  box-shadow: 0 2px 4px rgba(43, 22, 32, 0.4);
+  z-index: 2;
+}
+
+.tonearm {
+  position: absolute;
+  top: 14px;
+  right: 30px;
+  width: 4px;
+  height: 56px;
+  transform-origin: 50% 0%;
+  transform: rotate(-21deg);
+  transition: transform 0.5s var(--ease-soft);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tonearm.tonearmDown {
+  transform: rotate(44deg);
+}
+
+.tonearmShaft {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f0dcae, var(--antique-gold) 45%, #7a5f34);
+}
+
+.tonearmHead {
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 13px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--ink-plum);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 128px;
+  max-width: 160px;
+}
+
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  min-width: 0;
+}
+
+.trackTitle {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--maroon-ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trackArtist {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--ink-plum);
+  opacity: 0.65;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.iconButton {
+  border: none;
+  background: transparent;
+  color: var(--maroon-ink);
+  font-size: 1.1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s var(--ease-soft);
+}
+
+.iconButton:hover {
+  background: rgba(110, 20, 35, 0.08);
+}
+
+.playButton {
+  background: var(--maroon-ink);
+  color: var(--blush-cream);
+  width: 38px;
+  height: 38px;
+  font-size: 0.85rem;
+}
+
+.playButton:hover {
+  background: var(--maroon-ink-dark);
+}
+
+.dots {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(110, 20, 35, 0.2);
+  padding: 0;
+}
+
+.dotActive {
+  background: var(--maroon-ink);
+}
+
+@media (max-width: 640px) {
+  .player {
+    right: var(--space-2);
+    bottom: var(--space-2);
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+
+  .turntableWrap {
+    width: 106px;
+    height: 82px;
+  }
+
+  .discWrap {
+    top: 10px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .tonearmMount {
+    top: 4px;
+    right: 18px;
+    width: 12px;
+    height: 12px;
+  }
+
+  .tonearm {
+    top: 10px;
+    right: 22px;
+    height: 42px;
+  }
+
+  .controls {
+    min-width: 96px;
+  }
+}

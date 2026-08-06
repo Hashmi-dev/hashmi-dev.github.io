@@ -1,0 +1,16 @@
+.message {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 7vw, 4rem);
+  color: var(--maroon-ink);
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 4px 28px rgba(251, 243, 236, 0.95), 0 2px 6px rgba(251, 243, 236, 0.95);
+}

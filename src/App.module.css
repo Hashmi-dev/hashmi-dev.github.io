@@ -1,0 +1,9 @@
+.scene {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.scrollSpacer {
+  height: 220vh;
+}

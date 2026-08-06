@@ -1,0 +1,77 @@
+.wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.envelope {
+  position: relative;
+  width: clamp(220px, 32vw, 320px);
+  height: clamp(150px, 21vw, 210px);
+  background: var(--blush-cream-soft);
+  border: 1px solid rgba(110, 20, 35, 0.15);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  pointer-events: auto;
+}
+
+.flap {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 62%;
+  background: linear-gradient(160deg, var(--dusty-rose), var(--maroon-ink-dark));
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.toLine {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-3);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--ink-plum);
+  opacity: 0.75;
+}
+
+.seal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--blush-cream);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s var(--ease-soft), box-shadow 0.25s var(--ease-soft);
+}
+
+.seal:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: var(--shadow-deep);
+}
+
+.seal:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.seal:disabled:hover {
+  transform: translate(-50%, -50%);
+  box-shadow: var(--shadow-soft);
+}
+
+.sealIcon {
+  width: 30px;
+  height: 30px;
+}

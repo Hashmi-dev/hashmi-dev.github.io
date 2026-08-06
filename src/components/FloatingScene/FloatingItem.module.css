@@ -1,0 +1,23 @@
+.item {
+  position: absolute;
+  cursor: grab;
+  touch-action: none;
+  filter: drop-shadow(0 6px 14px rgba(43, 22, 32, 0.14));
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.framed {
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--blush-cream);
+  box-shadow: 0 10px 22px rgba(43, 22, 32, 0.2);
+}
