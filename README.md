@@ -1,16 +1,25 @@
-# React + Vite
+# To Hadiya.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A digital love letter — React + Vite site with floating draggable photos, a sealed letter that
+opens on click, and a vinyl player that spins through real songs.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Adding content
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Songs**: drop matching audio (`public/media/songs/`) and cover art (`public/media/song images/`)
+  files with the same base filename — `src/data/songs.js` regenerates automatically via a Vite
+  plugin, no code changes needed.
+- **Floating photos**: add images to `public/floating-images/` and reference them in
+  `src/data/floatingItems.js`.
+- **Letter text**: edit `src/components/Letter/LetterModal.jsx`.
 
-## Expanding the Oxlint configuration
+## Deployment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site and publishes it
+to GitHub Pages.
